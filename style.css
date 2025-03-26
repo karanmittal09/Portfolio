@@ -1,0 +1,28 @@
+/* style.css */
+#main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+#fs {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+#elem {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 0;
+  background-color: green;
+}
+
+#white {
+  width: 100%;
+  height: 0;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+}
