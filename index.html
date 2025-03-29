@@ -13,14 +13,93 @@
     />
   </head>
 
-<body>
-    <h1 class="reveal"> Creative</h1>
-    
-  <div id="main">
-    <div id="fs"></div>
-    <div id="elem"></div>
-    <div id="white"></div>
+  <body oncontextmenu="return false">
+
+    <div
+    id="loader"
+    style="
+      background-color: #f0f8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    "
+  >
+    <h1
+      style="
+        font-family: 'Poppins', sans-serif;
+        font-size: 3.5rem;
+        color: #333;
+      "
+    >
+      Hi friend, I am Karan. How are you?
+    </h1>
   </div>
+
+  <div id="intro">
+    <div class="slide" style="background-color: #ff6f61"></div>
+    <div class="slide" style="background-color: #6fa8dc"></div>
+    <div class="slide" style="background-color: #93c47d"></div>
+  </div>
+
+  <div id="bada" style="opacity: 0; display: none">
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo">Karan</a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list grid">
+            <li class="nav__item">
+              <a href="#home" class="nav__link active-link">
+                <i class="uil uil-estate nav__icon"></i>Home
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#about" class="nav__link">
+                <i class="uil uil-user nav__icon"></i>About
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#skills" class="nav__link">
+                <i class="uil uil-file-alt nav__icon"></i>Skills
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#qualification" class="nav__link">
+                <i class="uil uil-briefcase-alt nav__icon"></i>Qualification
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#portfolio" class="nav__link">
+                <i class="uil uil-scenery nav__icon"></i>Projects
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#contact" class="nav__link">
+                <i class="uil uil-message nav__icon"></i>Contact-Me
+              </a>
+            </li>
+          </ul>
+          <i class="uil uil-times nav__close" id="nav-close"></i>
+        </div>
+        <div class="nav__btns">
+          <!-- Theme change button -->
+          <i class="uil uil-moon change-theme" id="theme-button"></i>
+
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="uil uil-apps"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+   
+    
+    
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
   <script src="script.js"></script>
