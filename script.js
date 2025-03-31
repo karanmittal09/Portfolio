@@ -1,37 +1,50 @@
-var tl = gsap.timeline();
 
-tl.to("#fs", {
-  height: 0,
-  duration: 2,
-  ease: "expo.inOut"
+// Loader Function
+function initLoader() {
+  gsap.to("#loader", {
+    opacity: 0,
+    duration: 2.5,
+    ease: "expo.inOut",
+    onComplete: function () {
+      document.getElementById("loader").style.display = "none";
+
+      gsap.timeline()
+        .to("#intro", {
+          height: 0,
+          duration: 2, 
+          ease: "expo.inOut",
+        })
+        .to("#bada", {
+          opacity: 1, // ✅ No display animation here
+          duration: 2,
+          ease: "expo.inOut",
+          onStart: function () {
+            document.getElementById("bada").style.display = "block"; // ✅ Corrected
+          },
+          onComplete: function () {
+            initSwiper(); // ✅ Call Swiper after animations
+          },
+        });
+    },
+  });
+}
+
+// check if all elements of loader,intro,bada is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("loader") && document.getElementById("intro") && document.getElementById("bada")) {
+    initLoader();
+  } else {
+    console.error("Required elements with IDs 'loader', 'intro', or 'bada' are missing in the HTML.");
+  }
 });
 
-tl.to("#elem", {
-  height: "100%",
-  duration: 2,
-  delay: -2,
-  ease: "expo.inOut"
-});
 
-tl.to("#white", {
-  height: "100%",
-  duration: 2,
-  delay: -1.8,
-  ease: "expo.inOut"
-});
-
-document.querySelectorAll(".reveal").forEach((elem) => {
-  let spanParent = document.createElement("span");
-  let spanChild = document.createElement("span");
-
-  spanParent.classList.add("parent");
-  spanChild.classList.add("child");
-
-  spanChild.text = elem.textContent;
-  spanParent.appendChild(spanChild);
-
-  elem.innerHTML = "";
-  elem.appendChild(spanParent);
-
-})
-
+// Swiper Initialization
+function initSwiper() {
+  new Swiper(".portfolio__container", {
+    cssMode: true,
+    loop: true,
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    pagination: { el: ".swiper-pagination", clickable: true },
+  });
+}
