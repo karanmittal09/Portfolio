@@ -65,3 +65,23 @@ navToggle = document.getElementById("nav-toggle"),
       navMenu.classList.remove("show-menu");
     });
   }
+
+  //Remove menu on link click
+  const navLinks = document.querySelectorAll(".nav__link");
+  navLinks.forEach(n => n.addEventListener("click", () => {
+    navMenu.classList.remove("show-menu");
+  }));
+
+  //skills accordion
+  const skillsHeader = document.querySelector(".skills_header");
+
+  skillsHeader.forEach((el) => {
+    el.addEventListner("click", function (){
+      const parent = this.parentNode;
+
+    //Toggle clicked section 
+    parent.classList.toggle("skills__open");
+    parent.classList.toggle("skills__close");
+
+    });
+  });
