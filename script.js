@@ -85,3 +85,79 @@ navToggle = document.getElementById("nav-toggle"),
 
     });
   });
+
+// Services Modal
+const modalViews = document.querySelectorAll(".services__modal"),
+  modalBtns = document.querySelectorAll(".services__button"),
+  modalCloses = document.querySelectorAll(".services__modal-close");
+
+modalBtns.forEach((btn, i) => {
+  btn.addEventListener("click", () => {
+    modalViews[i].classList.add("active-modal");
+  });
+});
+
+modalCloses.forEach((close) => {
+  close.addEventListener("click", () => {
+    modalViews.forEach((view) => {
+      view.classList.remove("active-modal");
+    });
+  });
+});
+
+// Scroll sections Active Link
+const sections = document.querySelectorAll("section[id]");
+window.addEventListener("scroll", function () {
+  const scrollY = window.pageYOffset;
+
+  sections.forEach((current) => {
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 50;
+    const sectionId = current.getAttribute("id");
+
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      document
+        .querySelector(".nav__menu a[href*=" + sectionId + "]")
+        .classList.add("active-link");
+    } else {
+      document
+        .querySelector(".nav__menu a[href*=" + sectionId + "]")
+        .classList.remove("active-link");
+    }
+  });
+});
+
+// Scroll Header
+window.addEventListener("scroll", function () {
+  const nav = document.getElementById("header");
+  nav.classList.toggle("scroll-header", this.scrollY >= 80);
+});
+
+// Scroll Up
+window.addEventListener("scroll", function () {
+  const scrollUp = document.getElementById("scroll-up");
+  scrollUp.classList.toggle("show-scroll", this.scrollY >= 560);
+});
+
+// Dark/Light Theme
+const themeButton = document.getElementById("theme-button");
+const darkTheme = "dark-theme";
+const iconTheme = "uil-sun";
+
+const selectedTheme = localStorage.getItem("selected-theme");
+const selectedIcon = localStorage.getItem("selected-icon");
+
+if (selectedTheme) {
+  document.body.classList[selectedTheme === "dark" ? "add" : "remove"](darkTheme);
+  themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](iconTheme);
+}
+
+themeButton.addEventListener("click", () => {
+  document.body.classList.toggle(darkTheme);
+  themeButton.classList.toggle(iconTheme);
+  localStorage.setItem("selected-theme", document.body.classList.contains(darkTheme) ? "dark" : "light");
+  localStorage.setItem("selected-icon", themeButton.classList.contains(iconTheme) ? "uil-moon" : "uil-sun");
+});
+
+
+  
