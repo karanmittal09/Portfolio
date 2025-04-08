@@ -1,5 +1,3 @@
-
-// Loader Function
 function initLoader() {
   gsap.to("#loader", {
     opacity: 0,
@@ -29,7 +27,6 @@ function initLoader() {
   });
 }
 
-// check if all elements of loader,intro,bada is loaded
 document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("loader") && document.getElementById("intro") && document.getElementById("bada")) {
     initLoader();
@@ -37,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Required elements with IDs 'loader', 'intro', or 'bada' are missing in the HTML.");
   }
 });
-
 
 // Swiper Initialization
 function initSwiper() {
@@ -51,40 +47,40 @@ function initSwiper() {
 
 // Mobile Menu
 const navMenu = document.getElementById("nav-menu"),
-navToggle = document.getElementById("nav-toggle"),
+  navToggle = document.getElementById("nav-toggle"),
   navClose = document.getElementById("nav-close");
 
-  if(navToggle){
-    navToggle.addEventListener("click", ()=> {
-      navMenu.classList.add("shpw-menu");
-    })
-  }
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.add("show-menu");
+  });
+}
 
-  if (navClose) {
-    navClose.addEventListener("click", () => {
-      navMenu.classList.remove("show-menu");
-    });
-  }
-
-  //Remove menu on link click
-  const navLinks = document.querySelectorAll(".nav__link");
-  navLinks.forEach(n => n.addEventListener("click", () => {
+if (navClose) {
+  navClose.addEventListener("click", () => {
     navMenu.classList.remove("show-menu");
-  }));
+  });
+}
 
-  //skills accordion
-  const skillsHeader = document.querySelector(".skills_header");
+// Remove Menu on Link Click
+const navLinks = document.querySelectorAll(".nav__link");
+navLinks.forEach((n) => n.addEventListener("click", () => {
+  navMenu.classList.remove("show-menu");
+}));
 
-  skillsHeader.forEach((el) => {
-    el.addEventListner("click", function (){
-      const parent = this.parentNode;
+// Skills Accordion
+const skillsHeader = document.querySelectorAll(".skills__header");
 
-    //Toggle clicked section 
+skillsHeader.forEach((el) => {
+  el.addEventListener("click", function () {
+    const parent = this.parentNode;
+    
+    // Toggle the clicked section
     parent.classList.toggle("skills__open");
     parent.classList.toggle("skills__close");
-
-    });
   });
+});
+
 
 // Services Modal
 const modalViews = document.querySelectorAll(".services__modal"),
@@ -105,7 +101,7 @@ modalCloses.forEach((close) => {
   });
 });
 
-// Scroll sections Active Link
+// Scroll Sections Active Link
 const sections = document.querySelectorAll("section[id]");
 window.addEventListener("scroll", function () {
   const scrollY = window.pageYOffset;
@@ -158,6 +154,3 @@ themeButton.addEventListener("click", () => {
   localStorage.setItem("selected-theme", document.body.classList.contains(darkTheme) ? "dark" : "light");
   localStorage.setItem("selected-icon", themeButton.classList.contains(iconTheme) ? "uil-moon" : "uil-sun");
 });
-
-
-  
